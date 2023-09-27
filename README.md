@@ -12,7 +12,7 @@ repositories {
 **Step 2.** Add the dependency
 ```
 dependencies {
-    implementation 'com.github.TerZer:zadig4java:0.2'
+    implementation 'com.github.TerZer:zadig4java:0.3'
 }
 ```
 
