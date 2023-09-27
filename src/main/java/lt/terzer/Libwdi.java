@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.List;
 
 public class Libwdi {
 
@@ -56,7 +58,7 @@ public class Libwdi {
      * @return true if driver installation was successful, false otherwise
      */
     public static boolean installDriver(int vid, DriverType driverType){
-        return installDriver(vid, driverType.getId()) == 0;
+        return _installDriver(vid, driverType.getId()) == 0;
     }
 
     /**
@@ -67,9 +69,60 @@ public class Libwdi {
      * @return true if driver installation was successful, false otherwise
      */
     public static boolean installDriver(int vid, int pid, DriverType driverType){
-        return installDriver(vid, pid, driverType.getId()) == 0;
+        return _installDriver(vid, pid, driverType.getId()) == 0;
     }
 
-    private static native int installDriver(int vid, int driverType);
-    private static native int installDriver(int vid, int pid, int driverType);
+    /**
+     * This method checks if device or devices without driver exist. Filters devices by vendor id.
+     * @param vid USB device vendor id
+     * @return true if there are devices with specific VID without driver, false otherwise
+     */
+    public static boolean containsDeviceWithoutDriver(int vid){
+        return _containsDeviceWithoutDriver(vid);
+    }
+
+    /**
+     * This method checks if device or devices without driver exist. Filters devices by vendor and product ids.
+     * @param vid USB device vendor id
+     * @param pid USB device product id
+     * @return true if there are devices with specific VID and PID without driver, false otherwise
+     */
+    public static boolean containsDeviceWithoutDriver(int vid, int pid){
+        return _containsDeviceWithoutDriver(vid, pid);
+    }
+
+    /**
+     * This method retrieves all devices without driver.
+     * @return List of Device IDs without driver.
+     */
+    public static List<String> getDevicesWithoutDriver(){
+        return Arrays.asList(_getDevicesWithoutDriver());
+    }
+
+    /**
+     * This method retrieves all devices without driver with specified vendor id.
+     * @param vid USB device vendor id
+     * @return List of Device IDs without driver.
+     */
+    public static List<String> getDevicesWithoutDriver(int vid){
+        return Arrays.asList(_getDevicesWithoutDriver(vid));
+    }
+
+    /**
+     * This method retrieves all devices without driver with specified vendor and product ids.
+     * @param vid USB device vendor id
+     * @param pid USB device product id
+     * @return List of Device IDs without driver.
+     */
+    public static List<String> getDevicesWithoutDriver(int vid, int pid){
+        return Arrays.asList(_getDevicesWithoutDriver(vid, pid));
+    }
+
+    private static native int _installDriver(int vid, int driverType);
+    private static native int _installDriver(int vid, int pid, int driverType);
+    private static native boolean _containsDeviceWithoutDriver(int vid);
+    private static native boolean _containsDeviceWithoutDriver(int vid, int pid);
+    private static native String[] _getDevicesWithoutDriver();
+    private static native String[] _getDevicesWithoutDriver(int vid);
+    private static native String[] _getDevicesWithoutDriver(int vid, int pid);
 }

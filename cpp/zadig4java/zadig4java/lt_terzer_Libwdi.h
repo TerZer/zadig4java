@@ -7,21 +7,61 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-	/*
-	 * Class:     lt_terzer_Libwdi
-	 * Method:    installDriver
-	 * Signature: (II)I
-	 */
-	JNIEXPORT jint JNICALL Java_lt_terzer_Libwdi_installDriver__II
-	(JNIEnv*, jclass, jint, jint);
+/*
+ * Class:     lt_terzer_Libwdi
+ * Method:    _installDriver
+ * Signature: (II)I
+ */
+JNIEXPORT jint JNICALL Java_lt_terzer_Libwdi__1installDriver__II
+  (JNIEnv *, jclass, jint, jint);
 
-	/*
-	 * Class:     lt_terzer_Libwdi
-	 * Method:    installDriver
-	 * Signature: (III)I
-	 */
-	JNIEXPORT jint JNICALL Java_lt_terzer_Libwdi_installDriver__III
-	(JNIEnv*, jclass, jint, jint, jint);
+/*
+ * Class:     lt_terzer_Libwdi
+ * Method:    _installDriver
+ * Signature: (III)I
+ */
+JNIEXPORT jint JNICALL Java_lt_terzer_Libwdi__1installDriver__III
+  (JNIEnv *, jclass, jint, jint, jint);
+
+/*
+ * Class:     lt_terzer_Libwdi
+ * Method:    _containsDeviceWithoutDriver
+ * Signature: (I)Z
+ */
+JNIEXPORT jboolean JNICALL Java_lt_terzer_Libwdi__1containsDeviceWithoutDriver__I
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     lt_terzer_Libwdi
+ * Method:    _containsDeviceWithoutDriver
+ * Signature: (II)Z
+ */
+JNIEXPORT jboolean JNICALL Java_lt_terzer_Libwdi__1containsDeviceWithoutDriver__II
+  (JNIEnv *, jclass, jint, jint);
+
+/*
+ * Class:     lt_terzer_Libwdi
+ * Method:    _getDevicesWithoutDriver
+ * Signature: ()[Ljava/lang/String;
+ */
+JNIEXPORT jobjectArray JNICALL Java_lt_terzer_Libwdi__1getDevicesWithoutDriver__
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     lt_terzer_Libwdi
+ * Method:    _getDevicesWithoutDriver
+ * Signature: (I)[Ljava/lang/String;
+ */
+JNIEXPORT jobjectArray JNICALL Java_lt_terzer_Libwdi__1getDevicesWithoutDriver__I
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     lt_terzer_Libwdi
+ * Method:    _getDevicesWithoutDriver
+ * Signature: (II)[Ljava/lang/String;
+ */
+JNIEXPORT jobjectArray JNICALL Java_lt_terzer_Libwdi__1getDevicesWithoutDriver__II
+  (JNIEnv *, jclass, jint, jint);
 
 #ifdef __cplusplus
 }
